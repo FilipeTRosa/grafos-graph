@@ -109,7 +109,7 @@ int lenghtQueue (desc_queue * fqueue){
     return fqueue->tamanho;
     
 }
-/*
+
 void showQueue (desc_queue * fqueue){
 
     struct nodo * aux = fqueue->head;
@@ -117,12 +117,12 @@ void showQueue (desc_queue * fqueue){
     while (aux != NULL)
     {   
         //printf("\n*-----------------*\n");
-        imprimeNodo(aux);
+        printf("Chave [%d]", aux->chave);
         aux = aux->prox;
     }
         //printf("\n*-----------------*\n");
 
-}*/
+}
 
 /*
 void executarPlaylistQueue(desc_queue * fqueue, int tamanho){
