@@ -27,7 +27,7 @@ void * resetQueue (desc_queue * fqueue){
      fqueue->tail = NULL;
      fqueue->tamanho = 0;
 }
-
+/*
 desc_queue * deleteQueue (desc_queue * fqueue){
 
     if (fqueue->tamanho == 0)
@@ -46,7 +46,7 @@ desc_queue * deleteQueue (desc_queue * fqueue){
         resetQueue(fqueue);
     }
 }
-
+*/
 int emptyQueue (desc_queue * fqueue){
     if (fqueue->tamanho == 0)
     {
@@ -109,7 +109,7 @@ int lenghtQueue (desc_queue * fqueue){
     return fqueue->tamanho;
     
 }
-
+/*
 void showQueue (desc_queue * fqueue){
 
     struct nodo * aux = fqueue->head;
@@ -122,8 +122,9 @@ void showQueue (desc_queue * fqueue){
     }
         //printf("\n*-----------------*\n");
 
-}
+}*/
 
+/*
 void executarPlaylistQueue(desc_queue * fqueue, int tamanho){
 
     while (fqueue->tamanho != 0)
@@ -131,7 +132,7 @@ void executarPlaylistQueue(desc_queue * fqueue, int tamanho){
         executarMusica(dequeue(fqueue)); // testado!!
     }
     
-}
+}*/
 
 
 

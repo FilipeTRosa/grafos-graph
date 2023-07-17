@@ -1,4 +1,5 @@
 #include "grafo.h"
+#include "fila.h"
 #include <string.h>
 
 
@@ -134,7 +135,6 @@ void buscaProfundidade_DFS(struct descritor_grafo * grafo, struct nodo * nodo, i
 	/*Seleciona a primeira aresta deste nodo
 	para usar na busca de proximos nodos*/
 	struct aresta * arestaaux = nodo->adjacencias;
-	printf("Nodo Visitado [%d]\n", nodo->chave);
 	while (arestaaux != NULL)
 	{
 		//prepara o proximo nodo a ser buscado baseado na chegada da aresta
@@ -151,16 +151,32 @@ void buscaProfundidade_DFS(struct descritor_grafo * grafo, struct nodo * nodo, i
 }
 
 void buscaLargura_BFS(struct descritor_grafo * grafo,struct nodo * nodo, int *visitados){
+	visitados[nodo->chave] = 1;//marca nodo como visitado
+	desc_queue * fila = createQueue();//cria fila
+	struct nodo * aux = NULL;
+	struct aresta * arestaaux = NULL;
+	fila = enqueue(fila, nodo);
+	while (emptyQueue(fila) == 0)
+	{
+		aux = dequeue(fila);
+		arestaaux = aux->adjacencias;
+		while (arestaaux != NULL)
+		{
+			if (visitados[arestaaux->chegada] == 0)//se nao visitado entra
+			{
+				fila = enqueue(fila, buscaVertice(grafo, arestaaux->chegada));
+				visitados[arestaaux->chegada] = 1;
+			}
+			arestaaux = arestaaux->prox;
+		}
+	}
 	
-
-
-
 }
 
 void buscaNoGrafo(struct descritor_grafo * grafo){
 	int i, visitados[(grafo->max_vertices)+1], chave_busca, tipoBusca;
 	setbuf(stdin,NULL);
-	printf("1 - Busca BFS.\n2 - Busca BFS.\n");
+	printf("1 - Busca DFS.\n2 - Busca BFS.\n");
 	scanf("%d", &tipoBusca);
 	printf("Digite a chave inicial da busca\n");
 	scanf("%d", &chave_busca);
